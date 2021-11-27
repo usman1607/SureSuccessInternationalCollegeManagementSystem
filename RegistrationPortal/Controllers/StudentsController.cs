@@ -115,10 +115,6 @@ namespace RegistrationPortal.Controllers
                     return NotFound();
                 }
             }
-
-
-
-
         }
 
         [HttpPost]
