@@ -1,0 +1,84 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/v1/users/register",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44316
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/create",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/v1/users/login",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44316
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/login",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/v1/read/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44360
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/read/{id}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/v1/read",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44360
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/read",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/v1/update/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44389
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/update/{id}",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/v1/delete/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44354
+        }
+      ],
+      "UpstreamPathTemplate": "/api/v1/delete/{id}",
+      "UpstreamHttpMethod": [ "Delete" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5041"
+  }
+}

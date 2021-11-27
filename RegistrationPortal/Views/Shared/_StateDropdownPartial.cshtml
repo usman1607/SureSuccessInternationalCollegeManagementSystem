@@ -1,0 +1,21 @@
+﻿<script>
+    const states = ["Abuja", "Abia", "Lagos", "Ogun", "Osun"];
+    const stateSelect = document.querySelector("select#State");
+
+    states.forEach(state => {
+        let option = document.createElement('option');
+        option.value = state;
+        option.text = state;
+        stateSelect.appendChild(option);
+    })
+
+    const countries = ["Nigeria"];
+    const countrySelect = document.querySelector("select#Country");
+
+    countries.forEach(country => {
+        let option = document.createElement('option');
+        option.value = country;
+        option.text = country;
+        countrySelect.appendChild(option);
+    })
+</script>
