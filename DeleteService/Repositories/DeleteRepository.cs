@@ -21,8 +21,10 @@ namespace SSICMS.Microservises.DeleteService.Repositories
         {
             bool status = false;
             var student = await _context.Students.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
             if (student != null)
             {
+                _context.Users.Remove(user);
                 _context.Entry(student).State = EntityState.Deleted;
                 _context.SaveChanges();
                 status = true;

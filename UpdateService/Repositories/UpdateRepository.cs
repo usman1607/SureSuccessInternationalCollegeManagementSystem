@@ -27,7 +27,6 @@ namespace SSICMS.Microservises.UpdateService.Repositories
                 student.FirstName = model.FirstName;
                 student.LastName = model.LastName;
                 student.PhoneNumber = model.PhoneNumber;
-                student.Email = model.Email;
                 student.Address = model.Address;
                 student.Country = model.Country;
                 student.State = model.State;
