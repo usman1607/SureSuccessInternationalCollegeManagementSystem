@@ -7,3 +7,14 @@ The Registration portal(UI) or any other API Client can only send request to the
 
 To run the project, you will have to change the connection string user and password in the appsetting development.json file.
 And the services must be running for the API Gateway to make request accrose to them.
+
+
+API Gateway Endpoints
+When request is sent to API Gateway endpoint, it will send the request to appropriate servive.
+
+Login to get authentication token - https://localhost:5041/api/v1/login
+Student registration - https://localhost:5041/api/v1/create
+Get all registered students - https://localhost:/api/v1/read
+Edit Student Registration - https://localhost:5041/api/v1/update/{id}
+Detail - https://localhost:5041/api/v1/read/{id}
+Delete Record - https://localhost:5041/api/v1/delete/{id}
