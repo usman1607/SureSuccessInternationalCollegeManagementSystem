@@ -10,11 +10,17 @@ And the services must be running for the API Gateway to make request accrose to 
 
 
 API Gateway Endpoints
+
 When request is sent to API Gateway endpoint, it will send the request to appropriate servive.
 
 Login to get authentication token - https://localhost:5041/api/v1/login
+
 Student registration - https://localhost:5041/api/v1/create
+
 Get all registered students - https://localhost:/api/v1/read
+
 Edit Student Registration - https://localhost:5041/api/v1/update/{id}
+
 Detail - https://localhost:5041/api/v1/read/{id}
+
 Delete Record - https://localhost:5041/api/v1/delete/{id}
