@@ -18,6 +18,11 @@ namespace RegistrationPortal.Controllers
 
         public IActionResult Login()
         {
+            ViewBag.Message = null;
+            if (HttpContext.Request.Cookies["UserToken"] != null)
+            {
+                return RedirectToAction(nameof(Index), "Home");
+            }
             return View();
 
         }
@@ -32,9 +37,14 @@ namespace RegistrationPortal.Controllers
                 var response = await _client.PostAsync(url, content);
                 var token = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
+                if(!response.IsSuccessStatusCode)
+                {
+                    ViewBag.Message = "Invalid email or password";
+                    return View(model);
+                }
+
                 HttpContext.Response.Cookies.Append("UserToken", token);
 
-                //HttpCookie myCookie = new HttpCookie("MyTestCookie");
                 return RedirectToAction(nameof(Index), "Students");
             }
             return View(model);

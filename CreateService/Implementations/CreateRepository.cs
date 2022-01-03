@@ -26,7 +26,7 @@ namespace SSICMS.Microservises.CreateService.Implementations
             {
                 return new StudentResponseModel
                 {
-                    Message = "Student already exist.",
+                    Message = "Student with email already exist.",
                     Status = false,
                     StudentDto = null
                 };

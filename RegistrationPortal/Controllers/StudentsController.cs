@@ -77,12 +77,20 @@ namespace RegistrationPortal.Controllers
         public async Task<IActionResult> Create([FromForm] StudentRequestModel model)
         {
             StudentDto student = null;
+            StudentResponseModel responseModel = null;
             if (ModelState.IsValid)
             {
                 var url = $"https://localhost:5041/api/v1/create";
                 var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
                 var response = await _client.PostAsync(url, content);
-                student = await response.ReadContentAs<StudentDto>();
+                responseModel = await response.ReadContentAs<StudentResponseModel>();
+                if (!responseModel.Status)
+                {
+                    var message = responseModel.Message;
+                    ViewBag.Message = message;
+                    return View(model);
+                }
+                student = responseModel.StudentDto;
                 return RedirectToAction(nameof(Index));
             }
             return View(student);

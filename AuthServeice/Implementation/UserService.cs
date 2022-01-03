@@ -50,7 +50,14 @@ namespace AuthServeice.Implementation
             var url = $"https://localhost:44398/api/v1/create/register";
             var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
             var response = await _client.PostAsync(url, content);
-            var student = await response.ReadContentAs<StudentDto>();
+            var responseModel = await response.ReadContentAs<StudentResponseModel>();
+
+            if (!responseModel.Status)
+            {
+                return responseModel;
+            }
+
+            var student = responseModel.StudentDto;
 
             string salt = GenerateSalt();
 
@@ -65,22 +72,7 @@ namespace AuthServeice.Implementation
 
             await _userRepository.AddUser(user);
 
-            return new StudentResponseModel
-            {
-                Message = "Student Registration Created Successfully.",
-                Status = true,
-                StudentDto = new StudentDto
-                {
-                    Id = student.Id,
-                    FirstName = student.FirstName,
-                    LastName = student.LastName,
-                    PhoneNumber = student.PhoneNumber,
-                    Email = student.Email,
-                    Address = student.Address,
-                    Country = student.Country,
-                    State = student.State
-                }
-            };
+            return responseModel;
         }
 
         public async Task<string> Login(LoginRequestModel model)

@@ -21,7 +21,13 @@ namespace CreateService.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Create([FromBody] StudentRequestModel model)
         {
-            return Ok((await _createSerivce.Create(model)).StudentDto);
+            /*var response = await _createSerivce.Create(model);
+
+            if (!response.Status)
+            {
+                return null;
+            }*/
+            return Ok(await _createSerivce.Create(model));
         }
     }
 }
